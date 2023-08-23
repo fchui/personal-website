@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
+import { Link } from 'react-router-dom'
 import './App.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <Navigation />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
@@ -32,4 +34,17 @@ function App() {
   )
 }
 
+const Navigation = () => {
+  return (
+    <nav
+      style={{
+        borderBottom: 'solid 1px',
+        paddingBottom: '1rem',
+      }}
+    >
+      <Link to="/home">Home</Link>
+      <Link to="/users">Users</Link>
+    </nav>
+  );
+}
 export default App
