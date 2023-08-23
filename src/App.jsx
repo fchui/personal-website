@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link, Outlet } from 'react-router-dom'
 import './App.css'
 
 function App() {
@@ -20,8 +20,10 @@ function App() {
       <h1>Vite + React</h1>
       <Navigation />
       <Routes>
-        <Route path="home" element={<Home />} />
-        <Route path="users" element={<Users />} />
+        <Route element={<Layout />}>
+          <Route path="home" element={<Home />} />
+          <Route path="users" element={<Users />} />
+        </Route>
       </Routes>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -54,18 +56,24 @@ const Navigation = () => {
 
 const Home = () => {
   return (
-    <main style={{ padding: '1rem 0' }}>
-      <h2>Home</h2>
-    </main>
+      <>
+        <h2>Home</h2>
+      </>
   );
 };
 
 const Users = () => {
   return (
-    <main style={{ padding: '1rem 0' }}>
+    <>
       <h2>Users</h2>
-    </main>
+    </>
   );
 };
+
+const Layout = () => {
+  return <main style={{padding:'1rem 0'}}>
+    <Outlet />
+  </main>
+}
 
 export default App
