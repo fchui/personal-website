@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import { Routes, Route, Link, Outlet } from 'react-router-dom'
+import { Routes, Route, Link, Outlet, NavLink } from 'react-router-dom'
 import './App.css'
 
 function App() {
@@ -9,49 +9,16 @@ function App() {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <Navigation />
       <Routes>
         <Route element={<Layout />}>
+          <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
-          <Route path="users" element={<Users />} />
+          <Route path="projects" element={<Projects />} />
+          <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
-}
-
-const Navigation = () => {
-  return (
-    <nav
-      style={{
-        borderBottom: 'solid 1px',
-        paddingBottom: '1rem',
-      }}
-    >
-      <Link to="/home">Home</Link>
-      <Link to="/users">Users</Link>
-    </nav>
-  );
 }
 
 const Home = () => {
@@ -62,18 +29,39 @@ const Home = () => {
   );
 };
 
-const Users = () => {
+const Projects = () => {
   return (
     <>
-      <h2>Users</h2>
+      <h2>Projects</h2>
     </>
   );
 };
 
+const NoMatch = () => {
+  return (<p>There's nothing here: 404!</p>);
+};
+
 const Layout = () => {
-  return <main style={{padding:'1rem 0'}}>
-    <Outlet />
-  </main>
+  const style = ({ isActive }) => ({
+    fontWeight: isActive? 'bold' : 'normal',
+  });
+  return (
+  <>
+    <h1>React Router</h1>
+    <nav
+     style={{
+      borderBottom: 'solid 1px',
+      paddingBottom: '1rem',
+     }}
+     >
+      <NavLink to="/home" style={style}>Home</NavLink>
+      <NavLink to="/projects" style={style}>Projects</NavLink>
+     </nav>
+    <main style={{padding:'1rem 0'}}>
+      <Outlet />
+    </main>
+  </>
+  );
 }
 
 export default App
