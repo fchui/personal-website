@@ -69,19 +69,13 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
   const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
-    <a
+    <NavLink
+      to={link.label}
       key={link.label}
-      href={link.link}
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(link.link);
-      }}
     >
-      <NavLink to={link.label}>
         {link.label}
-      </NavLink>
-    </a>
+    </NavLink>
   ));
 
   return (
