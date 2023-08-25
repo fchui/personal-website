@@ -78,7 +78,9 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
         setActive(link.link);
       }}
     >
-      {link.label}
+      <NavLink to={link.label}>
+        {link.label}
+      </NavLink>
     </a>
   ));
 
@@ -102,12 +104,10 @@ const App = () => {
         <Text>Welcome to Mantine!</Text>
       </MantineProvider>
       <Routes>
-        <Route element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="home" element={<Home />} />
-          <Route path="projects" element={<Projects />} />
+          <Route path="Home" element={<Home />} />
+          <Route path="Projects" element={<Projects />} />
           <Route path="*" element={<NoMatch />} />
-        </Route>
       </Routes>
     </>
   )
@@ -132,7 +132,7 @@ const Projects = () => {
 const NoMatch = () => {
   return (<p>There's nothing here: 404!</p>);
 };
-
+/*
 const Layout = () => {
   const style = ({ isActive }) => ({
     fontWeight: isActive? 'bold' : 'normal',
@@ -155,5 +155,5 @@ const Layout = () => {
   </>
   );
 }
-
+*/
 export default App
