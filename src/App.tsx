@@ -213,15 +213,18 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
       to={link.label}
       key={link.label}
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
+      onClick={(event) => {
+        setActive(link.link);
+      }}
     >
         {link.label}
     </NavLink>
   ));
 
   return (
-    <Header height={60} mb={120}>
+    <Header height={60} mb={60}>
       <Container className={classes.header}>
-        <Group spacing={10} className={classes.links}>
+        <Group spacing={16} className={classes.links}>
           {items}
         </Group>
         <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
@@ -303,8 +306,7 @@ const App = () => {
   return (
     <>
       <MantineProvider withGlobalStyles withNormalizeCSS>
-      <HeaderSimple links={[{ "link": "/Home", "label": "Home" },{ "link": "/Projects", "label": "Projects" }]}></HeaderSimple>
-        <Text>Welcome to Mantine!</Text>
+        <HeaderSimple links={[{ "link": "/Home", "label": "Home" },{ "link": "/Projects", "label": "Projects" }]}></HeaderSimple>
       </MantineProvider>
       <Routes>
           <Route index element={<Home />} />
