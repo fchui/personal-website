@@ -197,6 +197,14 @@ const useStyles = createStyles((theme) => ({
       marginTop: theme.spacing.sm,
     },
   },
+
+  aboutMeDiv: {
+    backgroundColor: '#F5F5F5',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    paddingTop: `calc(${theme.spacing.xl} * 3)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 3)`,
+  },
 }));
 
 interface HeaderSimpleProps {
@@ -264,6 +272,25 @@ export function HeroImageRight() {
   );
 }
 
+export function AboutMe() {
+  const { classes, theme } = useStyles();
+
+  return (
+    <div className ={classes.aboutMeDiv}>
+      <Container size="lg" py="xl">
+        <Title order={2} className={classes.titleCard} ta="center" mt="sm">
+          About Me
+        </Title>
+        
+        <Text c="dimmed" className={classes.descriptionCard} ta="center" mt="md">
+          Every once in a while, you’ll see a Golbat that’s missing some fangs. This happens when
+          hunger drives it to try biting a Steel-type Pokémon.
+        </Text>
+      </Container>
+    </div>
+  );
+}
+
 export function FeaturesCards() {
   const { classes, theme } = useStyles();
   const features = mockdata.map((feature) => (
@@ -322,6 +349,7 @@ const Home = () => {
   return (
       <>
         <HeroImageRight />
+        <AboutMe />
         <FeaturesCards />
       </>
   );
