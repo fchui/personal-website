@@ -1,21 +1,13 @@
-import { createStyles, Text, Container, Title, rem } from '@mantine/core'
+import { createStyles, ActionIcon, Text, Container, Title, Avatar, Group, rem } from '@mantine/core'
+import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
+
 import React from 'react'
 
 const useStyles = createStyles((theme) => ({
-    descriptionCard: {
+    description: {
       maxWidth: 600,
       margin: 'auto',
-  
-      '&::after': {
-        content: '""',
-        display: 'block',
-        backgroundColor: theme.fn.primaryColor(),
-        width: rem(45),
-        height: rem(2),
-        marginTop: theme.spacing.sm,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-      },
+
     },
 
     titleCard: {
@@ -25,31 +17,62 @@ const useStyles = createStyles((theme) => ({
         [theme.fn.smallerThan('sm')]: {
           fontSize: rem(24),
         },
+
+        '&::after': {
+          content: '""',
+          display: 'block',
+          backgroundColor: theme.fn.primaryColor(),
+          width: rem(45),
+          height: rem(2),
+          marginTop: theme.spacing.sm,
+          marginLeft: 'auto',
+          marginRight: 'auto',
+        },
     },
 
-    aboutMeDiv: {
+    wrapper: {
       backgroundColor: '#F5F5F5',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       paddingTop: `calc(${theme.spacing.xl} * 3)`,
       paddingBottom: `calc(${theme.spacing.xl} * 3)`,
     },
+
+    avatar: {
+      size: '120',
+      radius: 'lg'
+    }
   }));
 
 export function AboutMe() {
     const { classes, theme } = useStyles();
   
     return (
-      <div className ={classes.aboutMeDiv}>
+      <div className ={classes.wrapper}>
         <Container size="lg" py="xl">
           <Title order={2} className={classes.titleCard} ta="center" mt="sm">
             About Me
           </Title>
-          
-          <Text c="dimmed" className={classes.descriptionCard} ta="center" mt="md">
-            Every once in a while, you’ll see a Golbat that’s missing some fangs. This happens when
-            hunger drives it to try biting a Steel-type Pokémon.
-          </Text>
+          <Group position='center' noWrap>
+              <Avatar src={'https://i.gyazo.com/a2ed4b668faf433418dacb5e742a1d29.jpg'} size={160} radius="lg" />
+              <div>
+                <Text fw={500} className={classes.description} ta="center" mt="md">
+                  I am a fresh computer engineer dedicated to learning more about
+                  the computer engineering. I graduated from Simon Fraser University and am excited
+                  to make contributions to clients who have need of my skills. Since kindergarden, I've always been
+                  fascinated with computers and working with them. This lead me to spend majority of my life working
+                  with computers and pursue a career with them. Welcome to my personal website!
+                </Text>
+              </div>
+          </Group>
+          <Group position='center' noWrap>
+            <ActionIcon size="lg">
+              <IconBrandGithub />
+            </ActionIcon>
+            <ActionIcon size="lg">
+              <IconBrandLinkedin />
+            </ActionIcon>
+          </Group>
         </Container>
       </div>
     );
