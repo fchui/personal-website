@@ -1,6 +1,5 @@
 import { createStyles, ActionIcon, Text, Container, Title, Avatar, Group, rem } from '@mantine/core'
 import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
-
 import React from 'react'
 
 const useStyles = createStyles((theme) => ({
@@ -41,7 +40,20 @@ const useStyles = createStyles((theme) => ({
     avatar: {
       size: '120',
       radius: 'lg'
+    },
+
+    social: {
+      [theme.fn.smallerThan('sm')]: {
+        width: 'auto',
+        marginLeft: 'auto',
+      },
+    },
+
+    a: {
+      textDecoration: 'none',
+      color: 'white',
     }
+
   }));
 
 export function AboutMe() {
@@ -65,13 +77,17 @@ export function AboutMe() {
                 </Text>
               </div>
           </Group>
-          <Group position='center' noWrap>
-            <ActionIcon size="lg">
-              <IconBrandGithub />
-            </ActionIcon>
-            <ActionIcon size="lg">
-              <IconBrandLinkedin />
-            </ActionIcon>
+          <Group className={classes.social} position='center' noWrap>
+              <a className={classes.a} href="https://github.com/fchui">
+                <ActionIcon variant="filled" size="xl">
+                      <IconBrandGithub size="2rem" stroke={1.5}/>
+                </ActionIcon>
+              </a>
+            <a className={classes.a} href="https://www.linkedin.com/in/francis-yk-chui/">
+              <ActionIcon variant="filled" size="xl">
+                  <IconBrandLinkedin size="2rem" stroke={1.5} />
+              </ActionIcon>
+            </a>
           </Group>
         </Container>
       </div>
