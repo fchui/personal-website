@@ -1,4 +1,4 @@
-import { createStyles, Text, Container,Title, rem } from '@mantine/core'
+import { createStyles, Text, Container, Title, rem } from '@mantine/core'
 import React from 'react'
 
 const useStyles = createStyles((theme) => ({
@@ -26,7 +26,7 @@ const useStyles = createStyles((theme) => ({
           fontSize: rem(24),
         },
     },
-    
+
     aboutMeDiv: {
       backgroundColor: '#F5F5F5',
       backgroundSize: 'cover',

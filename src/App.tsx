@@ -11,8 +11,7 @@ import { MantineProvider,
 import { useDisclosure } from '@mantine/hooks';
 
 import './App.css'
-import { Home } from './pages/Home'
-import { Projects } from './pages/Projects'
+import { Home, Projects } from './pages/index'
 import React from 'react'
 
 const useStyles = createStyles((theme) => ({

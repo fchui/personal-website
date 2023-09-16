@@ -1,7 +1,6 @@
 import React from 'react'
-import { HeroImageRight } from '../components/HeroImageRight';
-import { AboutMe } from '../components/AboutMe';
-import { FeaturesCards } from '../components/FeaturesCards'
+import { HeroImageRight, AboutMe, FeaturesCards } from '../components/index';
+
 export const Home = () => {
     return (
         <>
@@ -11,6 +10,3 @@ export const Home = () => {
         </>
     );
   };
-  
-
-export default Home
