@@ -1,4 +1,4 @@
 export * from './AboutMe'
-export * from './FeaturesCards'
+export * from './MyValues'
 export * from './HeroImageRight'
 export * from './HeaderSimple'

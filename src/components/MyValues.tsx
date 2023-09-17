@@ -1,25 +1,43 @@
 import { createStyles, Text, Container,Title, Group, Card, Badge, SimpleGrid, rem } from '@mantine/core'
-import { IconGauge, IconUser, IconCookie } from '@tabler/icons-react';
+import { IconHeartHandshake, IconPuzzle, IconCookie, IconPalette, IconFlag, IconEmpathize, IconHandGrab } from '@tabler/icons-react';
 import React from 'react'
 
-const mockdata = [
+const traitdata = [
     {
-      title: 'Extreme performance',
+      title: 'Commitment',
       description:
-        'This dust is actually a powerful poison that will even make a pro wrestler sick, Regice cloaks itself with frigid air of -328 degrees Fahrenheit',
-      icon: IconGauge,
+        'There is nothing more satisifying than a job well done. Any task assigned to me I intend to complete in an efficient and extraordinary manner.',
+      icon: IconHeartHandshake,
     },
     {
-      title: 'Privacy focused',
+      title: 'Creativity',
       description:
-        'People say it can run at the same speed as lightning striking, Its icy body is so cold, it will not melt even if it is immersed in magma',
-      icon: IconUser,
+        'Through my life I have learned to never get attached to a singular paradigm. I push myself to create my own thinking methods. Hence, my mind often has unique solutions for intriguing problems.',
+      icon: IconPalette,
     },
     {
-      title: 'No third parties',
+      title: 'Pragmatism',
       description:
-        'They’re popular, but they’re rare. Trainers who show them off recklessly may be targeted by thieves',
-      icon: IconCookie,
+        'I often keep in mind the big picture of a project and my role. If it means letting go of my personal emotions to complete a project, I am willing to do so ensure my clients are happy.',
+      icon: IconPuzzle,
+    },
+    {
+      title: 'Independence',
+      description:
+        'I believe that strong team consists of everyone being able to handle their tasks on their own. An independent person knows how to use dependence to their advantage.',
+      icon: IconHandGrab,
+    },
+    {
+      title: 'Leader',
+      description:
+        'When I am put in situations where I need to lead other people, I mantain a strong vision of the objective and delegate effectively.',
+      icon: IconFlag,
+    },
+    {
+      title: 'Empathetic',
+      description:
+        'As an engineer, I believe it is more important for me to listen and understand my clients vision than for me to understand my own vision. After all, a happy client is a happy me!',
+      icon: IconEmpathize,
     },
   ];
 
@@ -67,15 +85,15 @@ const useStyles = createStyles((theme) => ({
       },
   }));
 
-export function FeaturesCards() {
+export function MyValues() {
     const { classes, theme } = useStyles();
-    const features = mockdata.map((feature) => (
+    const features = traitdata.map((feature) => (
       <Card key={feature.title} shadow="md" radius="md" className={classes.card} padding="xl">
         <feature.icon size={rem(50)} stroke={2} color={theme.fn.primaryColor()} />
         <Text fz="lg" fw={500} className={classes.cardTitle} mt="md">
           {feature.title}
         </Text>
-        <Text fz="sm" c="dimmed" mt="sm">
+        <Text fz="sm" fw={400} mt="sm">
           {feature.description}
         </Text>
       </Card>
@@ -83,19 +101,14 @@ export function FeaturesCards() {
   
     return (
       <Container size="lg" py="xl">
-        <Group position="center">
-          <Badge variant="filled" size="lg">
-            Best company ever
-          </Badge>
-        </Group>
-  
+
         <Title order={2} className={classes.titleCard} ta="center" mt="sm">
-          Integrate effortlessly with any technology stack
+          My Values
         </Title>
   
         <Text c="dimmed" className={classes.descriptionCard} ta="center" mt="md">
-          Every once in a while, you’ll see a Golbat that’s missing some fangs. This happens when
-          hunger drives it to try biting a Steel-type Pokémon.
+          Here are some attributes that I believe are important in work. When I work for my clients, prepare
+          to see these traits!
         </Text>
   
         <SimpleGrid cols={3} spacing="xl" mt={50} breakpoints={[{ maxWidth: 'md', cols: 1 }]}>
