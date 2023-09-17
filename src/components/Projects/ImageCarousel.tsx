@@ -3,15 +3,15 @@ import { Carousel } from '@mantine/carousel';
 import { Image } from '@mantine/core';
 
 const images = [
-    'https://images.unsplash.com/photo-1694782172333-2703f5573b1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80',
-    'https://images.unsplash.com/photo-1567597435927-80055c207c1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    'https://images.unsplash.com/photo-1599269058071-5652fb5bf677?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80',
+    'https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png',
+    'https://i.gyazo.com/e26ae68bbcc06b00b4af6c2b0b6cceb2.png',
+    'https://i.gyazo.com/429cb1359e81a9c50f27871635187024.png',
 ];
 
 export function ImageCarousel() {
   const slides = images.map((url) => (
     <Carousel.Slide key={url}>
-      <Image width={640} height={480} radius="lg" src={url} />
+      <Image width={640} height={480} radius="lg" src={url}/>
     </Carousel.Slide>
   ));
 
