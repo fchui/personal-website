@@ -5,3 +5,4 @@ export * from './Home/HeaderSimple'
 
 export * from './Projects/ImageCarousel'
 export * from './Projects/ProjectDescription'
+export * from './Projects/PreviewCarousel'
