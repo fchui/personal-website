@@ -41,7 +41,7 @@ export function ProjectDescription() {
                         </Grid.Col>
                         <Grid.Col span={1}>
                             <Title className={classes.title} align={'left'} order={4}>Github Link:</Title>
-                            <Text className={classes.description} align={'left'}><a href="https://github.com/fchui/personal-website/tree/setup-projects-page">https://github.com/fchui/personal-website/tree/setup-projects-page</a></Text>
+                            <Text className={classes.description} align={'left'}><a href="https://github.com/fchui/personal-website">https://github.com/fchui/personal-website</a></Text>
                             <Title className={classes.title} align={'left'} order={4}>Date Created:</Title>
                             <Text className={classes.description} align={'left'}>Aug 23, 2023</Text>
                         </Grid.Col>
