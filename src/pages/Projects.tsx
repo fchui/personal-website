@@ -1,9 +1,12 @@
 import React from 'react'
 
+import { ImageCarousel, ProjectDescription } from '../components/index';
+
 export const Projects = () => {
-    return (
-      <>
-        <h2>Projects</h2>
-      </>
-    );
+  return (
+    <>
+      <ImageCarousel />
+      <ProjectDescription />
+    </>
+  );
 };
