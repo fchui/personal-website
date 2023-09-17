@@ -6,7 +6,6 @@ const useStyles = createStyles((theme) => ({
     description: {
       maxWidth: 600,
       margin: 'auto',
-
     },
 
     titleCard: {

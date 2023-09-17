@@ -5,8 +5,11 @@ import { PreviewCarousel, ImageCarousel, ProjectDescription } from '../component
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
-      paddingTop: `calc(${theme.spacing.xl} * 1)`,
-      paddingBottom: `calc(${theme.spacing.xl} * 1)`,
+    paddingTop: `calc(${theme.spacing.xl} * 1)`,
+  },
+
+  title: {
+    paddingBottom: `calc(${theme.spacing.xl} * 1)`,
   }
 }));
 
@@ -16,8 +19,8 @@ export const Projects = () => {
   return (
     <>
       <PreviewCarousel />
-      <Container>
-        <Title className={classes.wrapper} align="left">Project Title</Title>
+      <Container className={classes.wrapper} >
+        <Title className={classes.title} align="left">Personal Website</Title>
         <ImageCarousel />
         <ProjectDescription />
       </Container>
