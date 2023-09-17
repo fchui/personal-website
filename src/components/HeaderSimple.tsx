@@ -70,7 +70,7 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
     ));
   
     return (
-      <Header height={60} mb={60}>
+      <Header height={60} mb={0}>
         <Container className={classes.header}>
           <Group spacing={16} className={classes.links}>
             {items}
