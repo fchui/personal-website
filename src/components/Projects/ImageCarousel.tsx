@@ -16,7 +16,7 @@ export function ImageCarousel() {
   ));
 
   return (
-    <Carousel align="center" slideSize="70%" slideGap="md" maw={1080} mx="auto" withIndicators height={480}>
+    <Carousel align="center" slideSize="70%" slideGap="md" mx="auto" withIndicators height={480} loop>
       {slides}
     </Carousel>
   );
