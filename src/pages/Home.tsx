@@ -1,12 +1,12 @@
 import React from 'react'
-import { HeroImageRight, AboutMe, FeaturesCards } from '../components/index';
+import { HeroImageRight, AboutMe, MyValues } from '../components/index';
 
 export const Home = () => {
     return (
         <>
           <HeroImageRight /> 
           <AboutMe />
-          <FeaturesCards />
+          <MyValues />
         </>
     );
   };
