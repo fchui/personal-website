@@ -6,7 +6,6 @@ const useStyles = createStyles((theme) => ({
     description: {
       maxWidth: 600,
       margin: 'auto',
-
     },
 
     titleCard: {
@@ -43,6 +42,7 @@ const useStyles = createStyles((theme) => ({
     },
 
     social: {
+      paddingTop: `calc(${theme.spacing.xl} * 1)`,
       [theme.fn.smallerThan('sm')]: {
         width: 'auto',
         marginLeft: 'auto',
