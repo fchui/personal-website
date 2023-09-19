@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { createStyles, Title, Container} from '@mantine/core'
-import { PreviewCarousel, ImageCarousel, ProjectDescription } from '../components/index';
+import { PreviewCarousel2, ImageCarousel2, ProjectDescription2 } from '../components/index';
 
 var links = [
   {
@@ -12,7 +12,7 @@ var links = [
   { 
     "link": "../Projects/2", 
     "label": "2", 
-    "image": "https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png"
+    "image": "https://i.gyazo.com/5ef65a7220bf3bfb4bbc17a2a51848a0.png"
   }
 ]
 
@@ -31,11 +31,11 @@ const { classes, theme } = useStyles();
 
 return (
   <>
-    <PreviewCarousel links={links}/>
+    <PreviewCarousel2 links={links}/>
     <Container className={classes.wrapper} >
-      <Title className={classes.title} align="left">Personal Website</Title>
-      <ImageCarousel />
-      <ProjectDescription />
+      <Title className={classes.title} align="left">DIRTS - Capstone Project</Title>
+      <ImageCarousel2 />
+      <ProjectDescription2 />
     </Container>
   </>
 );

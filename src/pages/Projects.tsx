@@ -14,7 +14,7 @@ var links = [
     { 
       "link": "../Projects/2", 
       "label": "2", 
-      "image": "https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png"
+      "image": "https://i.gyazo.com/5ef65a7220bf3bfb4bbc17a2a51848a0.png"
     }
 ]
 
