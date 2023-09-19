@@ -58,7 +58,7 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
   
     const items = links.map((link) => (
       <NavLink
-        to={link.label}
+        to={link.link}
         key={link.label}
         className={cx(classes.link, { [classes.linkActive]: active === link.link })}
         onClick={(event) => {

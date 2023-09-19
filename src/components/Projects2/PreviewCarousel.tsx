@@ -4,10 +4,6 @@ import { useDisclosure } from '@mantine/hooks';
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 
-const images = [
-    'https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png',
-];
-
 const useStyles = createStyles((theme) => ({
     wrapper: {
         paddingTop: `calc(${theme.spacing.xl} * 1)`,
@@ -25,7 +21,7 @@ interface HeaderSimpleProps {
     links: { link: string; label: string; image: string }[];
 }
 
-export function PreviewCarousel({ links }: HeaderSimpleProps) {
+export function PreviewCarousel2({ links }: HeaderSimpleProps) {
     const [opened, { toggle }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
     const { classes, theme } = useStyles();
