@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStyles, Group, Image, Container, AspectRatio, Overlay } from '@mantine/core';
+import { createStyles, Group, Image, Container, AspectRatio, Overlay, rem } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom';
@@ -17,8 +17,26 @@ const useStyles = createStyles((theme) => ({
 
     image: {
         position: 'relative',
-        opacity: 0.45,
+        opacity: 0.8,
     },
+
+      
+    link: {
+        display: 'block',
+        padding: `${rem(8)} ${rem(12)}`,
+        borderRadius: theme.radius.sm,
+        color: theme.colors.dark[0] ,
+        '&:hover': {
+          backgroundColor: '#A9A9A9',
+        },
+      },
+    
+      linkActive: {
+        '&, &:hover': {
+          backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
+        },
+      },
+
   }));
 
 interface HeaderSimpleProps {
@@ -26,17 +44,17 @@ interface HeaderSimpleProps {
 }
 
 export function PreviewCarousel({ links }: HeaderSimpleProps) {
-    const [opened, { toggle }] = useDisclosure(false);
     const [active, setActive] = useState(links[0].link);
-    const { classes, theme } = useStyles();
+    const { classes, cx } = useStyles();
     
     const slides = links.map((link) => (
         <>
             <NavLink
             to={link.link}
             key={link.label}
+            className={cx(classes.link, { [classes.linkActive]: active === link.link })}
             onClick={(event) => {
-            setActive(link.link);
+                setActive(link.link);
             }}
             >
                 <Image className={classes.image} radius="md" src={link.image} width={150} height={100}/>
