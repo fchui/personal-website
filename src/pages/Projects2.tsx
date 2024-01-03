@@ -31,7 +31,6 @@ const { classes, theme } = useStyles();
 
 return (
   <>
-    <PreviewCarousel2 links={links}/>
     <Container className={classes.wrapper} >
       <Title className={classes.title} align="left">DIRTS - Capstone Project</Title>
       <ImageCarousel2 />

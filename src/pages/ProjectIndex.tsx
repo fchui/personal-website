@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { createStyles, Title, Container} from '@mantine/core'
+import { createStyles, Container, Text} from '@mantine/core'
 import { PreviewCarousel, ImageCarousel, ProjectDescription } from '../components/index';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet } from 'react-router-dom';
 import { Projects2 } from './';
 
 var links = [
@@ -28,16 +28,13 @@ const useStyles = createStyles((theme) => ({
   }
 }));
 
-export const Projects = () => {
+export const ProjectIndex = () => {
   const { classes, theme } = useStyles();
 
   return (
     <>
-      <Container className={classes.wrapper} >
-        <Title className={classes.title} align="left">Personal Website</Title>
-        <ImageCarousel />
-        <ProjectDescription />
-      </Container>
+      <PreviewCarousel links={links}/>
+      <Outlet />    
     </>
   );
 };
