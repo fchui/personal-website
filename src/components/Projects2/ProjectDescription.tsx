@@ -1,6 +1,6 @@
 import React from 'react'
 import { createStyles, Title, Text, Container, Grid, Skeleton, rem, TypographyStylesProvider } from '@mantine/core'
-import DOMPurify from 'dompurify'
+import DOMPurify from 'isomorphic-dompurify'
 
 const useStyles = createStyles((theme) => ({
     description: {
@@ -45,6 +45,7 @@ export function ProjectDescription2() {
     <a href="https://github.com/fchui/DIRTS">https://github.com/fchui/DIRTS</a> \
     <h4>Date Created:</h4> \
     <p>15 May, 2022</p>';
+
 
     const sanitizedData = () => ({
         __html: DOMPurify.sanitize(data)
