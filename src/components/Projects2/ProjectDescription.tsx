@@ -1,5 +1,6 @@
 import React from 'react'
 import { createStyles, Title, Text, Container, Grid, Skeleton, rem, TypographyStylesProvider } from '@mantine/core'
+import DOMPurify from 'dompurify'
 
 const useStyles = createStyles((theme) => ({
     description: {
@@ -44,7 +45,15 @@ export function ProjectDescription2() {
     <a href="https://github.com/fchui/DIRTS">https://github.com/fchui/DIRTS</a> \
     <h4>Date Created:</h4> \
     <p>15 May, 2022</p>';
-    
+
+    const sanitizedData = () => ({
+        __html: DOMPurify.sanitize(data)
+    })
+
+    const sanitizedDataInfo = () => ({
+        __html: DOMPurify.sanitize(dataInfo)
+    })
+
     const { classes, theme } = useStyles();
 
     return (
@@ -54,12 +63,12 @@ export function ProjectDescription2() {
                     <Grid columns={3}>
                         <Grid.Col className={classes.grid} span={2}>
                             <TypographyStylesProvider className={classes.description}>
-                                <div dangerouslySetInnerHTML={{__html: data}} />
+                                <div dangerouslySetInnerHTML={sanitizedData()} />
                             </TypographyStylesProvider>
                         </Grid.Col>
                         <Grid.Col span={1}>
                             <TypographyStylesProvider className={classes.description}>
-                                <div dangerouslySetInnerHTML={{__html: dataInfo}}/>
+                                <div dangerouslySetInnerHTML={sanitizedDataInfo()}/>
                             </TypographyStylesProvider>
                         </Grid.Col>
                     </Grid>
