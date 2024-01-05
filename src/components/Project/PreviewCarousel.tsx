@@ -1,8 +1,9 @@
 import React from 'react'
-import { createStyles, Group, Image, Container, AspectRatio, Overlay, rem } from '@mantine/core';
+import { createStyles, Group, Image, Container, AspectRatio, Overlay, TypographyStylesProvider, rem } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLoaderData } from 'react-router-dom';
+import type { Projects } from '../../projects';
 
 const useStyles = createStyles((theme) => ({
     wrapper: {
@@ -39,21 +40,23 @@ interface HeaderSimpleProps {
     links: { id: string, link: string; label: string; image: string }[];
 }
 
-export function PreviewCarousel({ links }: HeaderSimpleProps) {
-    const [active, setActive] = useState(links[0].link);
+export function PreviewCarousel() {
+    let projects = useLoaderData() as Projects;
+  
+    const [active, setActive] = useState('/Projects/1');
     const { classes, cx } = useStyles();
-    
-    const slides = links.map((link) => (
+
+    const slides = Object.entries(projects).map(([id, project]) => (
         <>
             <NavLink
-            to={`/Projects/${link.id}`}
-            key={link.label}
-            className={cx(classes.link, { [classes.linkActive]: active === link.link })}
+            to={`/Projects/${id}`}
+            key={id}
+            className={cx(classes.link, { [classes.linkActive]: active === `/Projects/${id}` })}
             onClick={(event) => {
-                setActive(link.link);
+                setActive(`/Projects/${id}`);
             }}
             >
-                <Image className={classes.image} radius="md" src={link.image} width={150} height={100}/>
+                <Image className={classes.image} radius="md" src={project.previewImage} width={150} height={100}/>
             </NavLink>
         </>
     ));
