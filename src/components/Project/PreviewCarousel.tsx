@@ -1,12 +1,9 @@
 import React from 'react'
-import { createStyles, Group, Image, Container, AspectRatio, Overlay, rem } from '@mantine/core';
+import { createStyles, Group, Image, Container, AspectRatio, Overlay, TypographyStylesProvider, rem } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom';
-
-const images = [
-    'https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png',
-];
+import { NavLink, useLoaderData } from 'react-router-dom';
+import type { Projects } from '../../projects';
 
 const useStyles = createStyles((theme) => ({
     wrapper: {
@@ -40,24 +37,26 @@ const useStyles = createStyles((theme) => ({
   }));
 
 interface HeaderSimpleProps {
-    links: { link: string; label: string; image: string }[];
+    links: { id: string, link: string; label: string; image: string }[];
 }
 
-export function PreviewCarousel2({ links }: HeaderSimpleProps) {
-    const [active, setActive] = useState(links[1].link);
+export function PreviewCarousel() {
+    let projects = useLoaderData() as Projects;
+  
+    const [active, setActive] = useState('/Projects/1');
     const { classes, cx } = useStyles();
-    
-    const slides = links.map((link) => (
+
+    const slides = Object.entries(projects).map(([id, project]) => (
         <>
             <NavLink
-            to={link.link}
-            key={link.label}
-            className={cx(classes.link, { [classes.linkActive]: active === link.link })}
+            to={`/Projects/${id}`}
+            key={id}
+            className={cx(classes.link, { [classes.linkActive]: active === `/Projects/${id}` })}
             onClick={(event) => {
-                setActive(link.link);
+                setActive(`/Projects/${id}`);
             }}
             >
-                <Image className={classes.image} radius="md" src={link.image} width={150} height={100}/>
+                <Image className={classes.image} radius="md" src={project.previewImage} width={150} height={100}/>
             </NavLink>
         </>
     ));

@@ -1,3 +1,4 @@
 export * from './Home';
-export * from './Projects';
-export * from './Projects2';
+export * from './Project';
+export * from './ProjectIndex';
+export * from './Root'
