@@ -1,5 +1,5 @@
 export interface Projects {
-    [key: string]: { previewImage: string, data: string };
+    [key: string]: { previewImage: string, title: string, images: string[], data: string, dataInfo: string };
 }
 
 const PROJECTS_KEY = "projects";
@@ -12,6 +12,12 @@ function initializeProjects(): Projects {
     var collection: Projects = {};
     collection["1"] = { 
         previewImage : "https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png",
+        title: "Personal Website",
+        images : [
+            'https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png',
+            'https://i.gyazo.com/e26ae68bbcc06b00b4af6c2b0b6cceb2.png',
+            'https://i.gyazo.com/429cb1359e81a9c50f27871635187024.png'
+        ],
         data : " \
     <h2>Attractive website using the React framework</h2> \
     <p>One of the simplest ways to present anything is to showcase it. Which is why I believe a setting up a personal website is the best way to showcase anything I make in my personal developer journey.</p> \
@@ -21,9 +27,22 @@ function initializeProjects(): Projects {
     <h3>React Routing</h3> \
     <p>Another feature of this site is the React Router library. Older websites would need to reload the website every time a link is pressed. This means that HTML, CSS and Javascript will all need to be evaluated before a website is finished loading. \
     Through using React Router, only certain parts of the website needs to be rendered when a link is switched within a site.</p> \
-    "}
+    ",
+        dataInfo: ' \
+    <h4>Github Link:</h4> \
+    <p><a href="https://github.com/fchui/personal-website">https://github.com/fchui/personal-website</a></p> \
+    <h4>Date Created:</h4> \
+    <p>Aug 23, 2023</p>'
+    }
+
     collection["2"] = { 
         previewImage : "https://i.gyazo.com/5ef65a7220bf3bfb4bbc17a2a51848a0.png",
+        title : 'DIRTS - Capstone Project',
+        images : [
+            'https://i.gyazo.com/5ef65a7220bf3bfb4bbc17a2a51848a0.png',
+            'https://i.gyazo.com/f6fa1beac5de26bceb8cc1db120f0d29.png',
+            'https://i.gyazo.com/f5ff541950e0112d42179c7694991ae9.png'
+        ],
         data : ' \
         <h2>Helpful Assistant For Gardeners</h2> \
         <p>Capstone Presentation: <a href="https://www.youtube.com/watch?v=GHnZltRC3K4&t=215s">https://www.youtube.com/watch?v=GHnZltRC3K4&t=215s</a></p> \
@@ -40,7 +59,12 @@ function initializeProjects(): Projects {
             <li>Mehar Rehill - Plant Database and Research</li> \
             <li>Kyle Granville - Embedded Systems</li> \
             <li>Gurparkash Singh - Product Design and Structure</li> \
-        </ul>'}
+        </ul>',
+        dataInfo : '<h4>Github Link:</h4> \
+        <a href="https://github.com/fchui/DIRTS">https://github.com/fchui/DIRTS</a> \
+        <h4>Date Created:</h4> \
+        <p>15 May, 2022</p>'
+    }
     saveProjects(collection)
     return collection
 }

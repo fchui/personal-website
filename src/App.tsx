@@ -1,9 +1,9 @@
-import { Routes, Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
+import { Routes, Route, Navigate, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
 import { MantineProvider } from '@mantine/core'
 
 import './App.css'
 import { HeaderSimple } from './components';
-import { Home, ProjectIndex, Project, Projects2, Root } from './pages'
+import { Home, ProjectIndex, Project, Root } from './pages'
 import { getProjects, type Projects } from './projects';
 
 import React from 'react'
@@ -18,6 +18,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="Home" element={<Home />} />
       <Route path="Projects" loader={projectsLoader} element={<ProjectIndex />}>
+        <Route index element={<Navigate to="1" />}></Route>
         <Route path=":projectId" loader={projectsLoader} element={<Project />} />
       </Route>
       <Route path="*" element={<NoMatch />} />

@@ -18,11 +18,17 @@ const useStyles = createStyles((theme) => ({
 export const Project = () => {
   const { classes, theme } = useStyles();
   let projects = useLoaderData() as Projects;
+  let { projectId } = useParams();
 
+  if (!projectId)
+  {
+    throw new Error("expected projectId")
+  }
+  
   return (
     <>
       <Container className={classes.wrapper} >
-        <Title className={classes.title} align="left">Personal Website</Title>
+        <Title className={classes.title} align="left">{projects[projectId].title}</Title>
         <ImageCarousel />
         <ProjectDescription />
       </Container>
