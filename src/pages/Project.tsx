@@ -1,22 +1,9 @@
 import React from 'react'
 
 import { createStyles, Title, Container} from '@mantine/core'
-import { PreviewCarousel, ImageCarousel, ProjectDescription } from '../components/index';
-import { Routes, Route } from 'react-router-dom';
-import { Projects2 } from './';
-
-var links = [
-    {
-      "link": "../Projects/1", 
-      "label": "1", 
-      "image": 'https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png'
-    },
-    { 
-      "link": "../Projects/2", 
-      "label": "2", 
-      "image": "https://i.gyazo.com/5ef65a7220bf3bfb4bbc17a2a51848a0.png"
-    }
-]
+import { ImageCarousel, ProjectDescription } from '../components/index';
+import { useLoaderData, useParams } from 'react-router-dom';
+import type { Projects } from '../projects';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -28,8 +15,9 @@ const useStyles = createStyles((theme) => ({
   }
 }));
 
-export const Projects = () => {
+export const Project = () => {
   const { classes, theme } = useStyles();
+  let projects = useLoaderData() as Projects;
 
   return (
     <>
