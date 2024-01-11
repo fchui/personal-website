@@ -11,6 +11,34 @@ export function saveProjects(projects: Projects): void {
 function initializeProjects(): Projects {
     var collection: Projects = {};
     collection["1"] = { 
+        previewImage : "https://i.gyazo.com/352094e86be41ffea8288b9ba5f2230f.png",
+        title: "AI Stream Commentator",
+        images : [
+            'https://i.gyazo.com/003250ef3d4846ffa7deb9116980a8ff.png',
+            'https://i.gyazo.com/45c3b81b6a39372c32013948685cfd4d.png'
+        ],
+        data : " \
+    <h2>An AI Powered Commentator that works with any modern browser</h2> \
+    <p>This web application uses WebRTC to work on any modern browser (Chrome >= v.72; Firefox >= v.66) without plugins. Stream desktop content into the video player and a GPT-4 vision model will analyze the content. \
+    Commentary is generated based on the prompt given and the image analyzed.</p> \
+    <h3>Powered by Python and Streamlit</h3>\
+    <p>Deployed via Streamlit, the back end is powered by python code that converts the image into a numpy array to work with OpenCV. This array is converted into base64 frames and sent to the GPT-4 vision \
+    model.</p>\
+    <h3>NAT Traversal with Coturn</h3> \
+    <p>With WebRTC protocol, an important method to handle NAT traversal is to use ICE servers. \
+    The AI Stream Commentator is set up with open source implementation of a TURN server called Coturn to handle VoIP media traffic. \
+    This provides a stability to connections in various network environments.</p> \
+    ",
+        dataInfo: ' \
+    <h4>Github Link:</h4> \
+    <p><a href="https://github.com/Ai-riku/GPT-Live-Commentator">https://github.com/Ai-riku/GPT-Live-Commentator</a></p> \
+    <h4>Website Link:</h4> \
+    <p><a href="https://ai-commentary.streamlit.app">https://ai-commentary.streamlit.app</a></p>\
+    <h4>Date Created:</h4> \
+    <p>Nov 11, 2023</p>'
+    }
+
+    collection["2"] = { 
         previewImage : "https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png",
         title: "Personal Website",
         images : [
@@ -19,10 +47,10 @@ function initializeProjects(): Projects {
             'https://i.gyazo.com/429cb1359e81a9c50f27871635187024.png'
         ],
         data : " \
-    <h2>Attractive website using the React framework</h2> \
+    <h2>Attractive website using React</h2> \
     <p>One of the simplest ways to present anything is to showcase it. Which is why I believe a setting up a personal website is the best way to showcase anything I make in my personal developer journey.</p> \
-    <h3>Modern Frameworks</h3> \
-    <p>Through learning modern frameworks, the potential to create higher quality products increases. That\'s why I am always open to learning new ideas to increase the quality of my code. \
+    <h3>Vite Framework</h3> \
+    <p>Through learning frameworks like Vite, the potential to create higher quality products increases. That\'s why I am always open to learning new ideas to increase the quality of my code. \
     As well, utilizing more technical methods over drag-and-drop websites grants further freedom of control over the site. This website is also built in conjunction with the Mantine library, an open-source library free and easy to use to create attractive websites.</p> \
     <h3>React Routing</h3> \
     <p>Another feature of this site is the React Router library. Older websites would need to reload the website every time a link is pressed. This means that HTML, CSS and Javascript will all need to be evaluated before a website is finished loading. \
@@ -35,7 +63,7 @@ function initializeProjects(): Projects {
     <p>Aug 23, 2023</p>'
     }
 
-    collection["2"] = { 
+    collection["3"] = { 
         previewImage : "https://i.gyazo.com/5ef65a7220bf3bfb4bbc17a2a51848a0.png",
         title : 'DIRTS - Capstone Project',
         images : [
