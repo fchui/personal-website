@@ -4,7 +4,8 @@ import { MantineProvider } from '@mantine/core'
 import './App.css'
 import { HeaderSimple } from './components';
 import { Home, ProjectIndex, Project, Root } from './pages'
-import { getProjects, type Projects } from './projects';
+import { getProjects } from './projects';
+import { type Projects } from './data'
 
 import React from 'react'
 
