@@ -2,7 +2,7 @@ import React from 'react'
 import { Carousel } from '@mantine/carousel';
 import { Image } from '@mantine/core';
 import { useParams, useLoaderData } from 'react-router-dom';
-import { Projects } from '../../projects';
+import { Projects } from '../../data';
 const images = [
     'https://i.gyazo.com/5946002de9c0230a6b1bdf777d86fee0.png',
     'https://i.gyazo.com/e26ae68bbcc06b00b4af6c2b0b6cceb2.png',

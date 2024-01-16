@@ -3,7 +3,7 @@ import { createStyles, Group, Image, Container, AspectRatio, Overlay, Typography
 import { useDisclosure } from '@mantine/hooks';
 import { useState } from 'react'
 import { NavLink, useLoaderData } from 'react-router-dom';
-import type { Projects } from '../../projects';
+import type { Projects } from '../../data';
 
 const useStyles = createStyles((theme) => ({
     wrapper: {
@@ -30,7 +30,9 @@ const useStyles = createStyles((theme) => ({
     
       linkActive: {
         '&, &:hover': {
+          display: 'block',
           backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
+          padding: `${rem(8)} ${rem(12)}`,
         },
       },
 
@@ -51,7 +53,7 @@ export function PreviewCarousel() {
             <NavLink
             to={`/Projects/${id}`}
             key={id}
-            className={cx(classes.link, { [classes.linkActive]: active === `/Projects/${id}` })}
+            className={({ isActive }) => isActive ? classes.linkActive : classes.link } 
             onClick={(event) => {
                 setActive(`/Projects/${id}`);
             }}
