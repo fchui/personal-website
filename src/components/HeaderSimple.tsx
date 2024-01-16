@@ -43,6 +43,7 @@ const useStyles = createStyles((theme) => ({
       '&, &:hover': {
         backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
         color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
+        padding: `${rem(8)} ${rem(12)}`,
       },
     },
   }));
@@ -60,7 +61,7 @@ export function HeaderSimple({ links }: HeaderSimpleProps) {
       <NavLink
         to={link.link}
         key={link.label}
-        className={cx(classes.link, { [classes.linkActive]: active === link.link })}
+        className={({ isActive }) => isActive ? classes.linkActive : classes.link }    
         onClick={(event) => {
           setActive(link.link);
         }}
