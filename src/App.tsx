@@ -16,7 +16,7 @@ const NoMatch = () => {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Root />}>
-      <Route index element={<Home />} />
+      <Route index element={<Navigate to="Home" />} />
       <Route path="Home" element={<Home />} />
       <Route path="Projects" loader={projectsLoader} element={<ProjectIndex />}>
         <Route index element={<Navigate to="1" />}></Route>
