@@ -1,8 +1,8 @@
-import React from 'react'
+import {useState, useEffect, React} from 'react'
 
-import { createStyles, Container, Text, TypographyStylesProvider} from '@mantine/core'
-import { PreviewCarousel, ImageCarousel, ProjectDescription } from '../components/index';
-import { Routes, Route, Outlet, useLoaderData } from 'react-router-dom';
+import { createStyles} from '@mantine/core'
+import { PreviewCarousel } from '../components/index';
+import { Outlet} from 'react-router-dom';
 import type { Projects } from '../projects';
 
 
@@ -18,11 +18,29 @@ const useStyles = createStyles((theme) => ({
 
 export const ProjectIndex = () => {
   const { classes, theme } = useStyles();
+  const [merchants, setMerchants] = useState(false);
+
+  function getMerchant() {
+    fetch('http://localhost:3001')
+      .then(response => {
+        return response.text();
+      })
+      .then(data => {
+        setMerchants(data);
+      });
+  }
+
+  useEffect(() => {
+    getMerchant();
+  }, []);
 
   return (
     <>
       <PreviewCarousel/>
-      <Outlet /> 
+      <Outlet />
+      <div>
+        {merchants ? merchants : 'There is no merchant data available'}
+      </div>
     </>
   );
 };
