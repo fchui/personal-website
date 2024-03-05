@@ -84,9 +84,31 @@ const updateMerchant = (id, body) => {
     );
   });
 };
+//get all projects from our database
+const getProjects = async () => {
+  try {
+    return await new Promise(function (resolve, reject) {
+      pool.query("SELECT * FROM projects", (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        if (results && results.rows) {
+          resolve(results.rows);
+        } else {
+          reject(new Error("No results found"));
+        }
+      });
+    });
+  } catch (error_1) {
+    console.error(error_1);
+    throw new Error("Internal server error");
+  }
+};
+
 module.exports = {
   getMerchants,
   createMerchant,
   deleteMerchant,
-  updateMerchant
+  updateMerchant,
+  getProjects
 };

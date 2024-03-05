@@ -1,4 +1,4 @@
-import {Projects, collection} from "./data/projectdata.ts"
+import {Projects, collection as backup} from "./data/projectdata.ts"
 
 const PROJECTS_KEY = "projects";
 
@@ -7,6 +7,23 @@ export function saveProjects(projects: Projects): void {
 }
 
 function initializeProjects(): Projects {
+    let projectJSON: string[] = [];
+    let collection: Projects | null = null;
+    
+    fetch('http://localhost:3001')
+    .then(response => {
+      return response.text();
+    })
+    .then(data => {
+      projectJSON = JSON.parse(data)
+      for (var project of projectJSON)
+      {
+
+        collection[project.id] = {previewImage: project.previewimage, title: project.title, images: project.images.split(','), data: project.data, dataInfo: project.datainfo}
+      }
+    });
+    
+    collection = collection ? collection : backup
     saveProjects(collection)
     return collection
 }

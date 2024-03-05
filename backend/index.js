@@ -13,7 +13,7 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-  merchant_model.getMerchants()
+  merchant_model.getProjects()
   .then(response => {
     res.status(200).send(response);
   })
