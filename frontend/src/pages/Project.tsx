@@ -3,7 +3,7 @@ import React from 'react'
 import { createStyles, Title, Container} from '@mantine/core'
 import { ImageCarousel, ProjectDescription } from '../components/index';
 import { useLoaderData, useParams } from 'react-router-dom';
-import type { Projects } from '../projects';
+import type { Projects } from '../data/projectdata';
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -24,7 +24,7 @@ export const Project = () => {
   {
     throw new Error("expected projectId")
   }
-  
+
   return (
     <>
       <Container className={classes.wrapper} >

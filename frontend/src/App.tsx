@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
-import { MantineProvider } from '@mantine/core'
+import { MantineProvider, Text } from '@mantine/core'
 
 import './App.css'
 import { HeaderSimple } from './components';
@@ -10,7 +10,7 @@ import { type Projects } from './data'
 import React from 'react'
 
 const NoMatch = () => {
-  return (<p>There's nothing here: 404!</p>);
+  return (<Text>There's nothing here: 404!</Text>);
 };
 
 const router = createBrowserRouter(
@@ -18,9 +18,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<Root />}>
       <Route index element={<Navigate to="Home" />} />
       <Route path="Home" element={<Home />} />
-      <Route path="Projects" loader={projectsLoader} element={<ProjectIndex />}>
+      <Route path="Projects" loader={projectsLoader} element={<ProjectIndex />} errorElement={<NoMatch />}>
         <Route index element={<Navigate to="1" />}></Route>
-        <Route path=":projectId" loader={projectsLoader} element={<Project />} />
+        <Route path=":projectId" loader={projectsLoader} element={<Project />}/>
       </Route>
       <Route path="*" element={<NoMatch />} />
     </Route>
@@ -36,6 +36,7 @@ const App = () => {
 
 export async function projectsLoader(): Promise<Projects> {
   new Promise((r) => setTimeout(r, 500));
+  console.log('loading..')
   return getProjects();
 };
 
