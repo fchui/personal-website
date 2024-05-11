@@ -6,37 +6,37 @@ const traitdata = [
     {
       title: 'Commitment',
       description:
-        'There is nothing more satisifying than a job well done. Any task assigned to me I intend to complete in an efficient and extraordinary manner.',
+        'I am deeply committed to delivering exceptional results in everything I undertake. Every task I take on is approached with a strong sense of dedication and a focus on achieving excellence.',
       icon: IconHeartHandshake,
     },
     {
       title: 'Creativity',
       description:
-        'Through my life I have learned to never get attached to a singular paradigm. I push myself to create my own thinking methods. Hence, my mind often has unique solutions for intriguing problems.',
+        'Throughout my journey, I have embraced the power of creativity. I constantly challenge myself to think outside the box, pushing the boundaries of what is possible. This mindset allows me to approach problems with fresh perspectives and find innovative solutions.',
       icon: IconPalette,
     },
     {
       title: 'Pragmatism',
       description:
-        'I often keep in mind the big picture of a project and my role. If it means letting go of my personal emotions to complete a project, I am willing to do so ensure my clients are happy.',
+        'I believe in the importance of maintaining a practical and pragmatic approach to projects. While keeping sight of the big picture, I strive to balance efficiency, quality, and client satisfaction. I am willing to adapt and make tough decisions when necessary to ensure successful outcomes.',
       icon: IconPuzzle,
     },
     {
       title: 'Independence',
       description:
-        'I believe that strong team consists of everyone being able to handle their tasks on their own. An independent person knows how to use dependence to their advantage.',
+        'I value the ability to work independently and take ownership of my responsibilities. I have developed a strong sense of self-reliance, allowing me to contribute effectively to projects while also collaborating seamlessly within a team.',
       icon: IconHandGrab,
     },
     {
       title: 'Leader',
       description:
-        'When I am put in situations where I need to lead other people, I mantain a strong vision of the objective and delegate effectively.',
+        'When presented with leadership opportunities, I embrace them with a clear vision and a focus on inspiring and motivating others. I believe in empowering team members, fostering a collaborative environment, and driving collective success.',
       icon: IconFlag,
     },
     {
       title: 'Empathetic',
       description:
-        'As an engineer, I believe it is more important for me to listen and understand my clients vision than for me to understand my own vision. After all, a happy client is a happy me!',
+        'Understanding and empathizing with others is at the core of my approach. I prioritize active listening and open communication to grasp the needs and aspirations of clients and colleagues. Putting myself in their shoes, I can better tailor my solutions and build strong, meaningful relationships.',
       icon: IconEmpathize,
     },
   ];
@@ -107,8 +107,8 @@ export function MyValues() {
         </Title>
   
         <Text c="dimmed" className={classes.descriptionCard} ta="center" mt="md">
-          Here are some attributes that I believe are important in work. When I work for my clients, prepare
-          to see these traits!
+          These values form the foundation of my professional character and guide me in delivering impactful results. 
+          I invite you to explore my website further to gain deeper insights into my work and the value I can bring to your projects.
         </Text>
   
         <SimpleGrid cols={3} spacing="xl" mt={50} breakpoints={[{ maxWidth: 'md', cols: 1 }]}>

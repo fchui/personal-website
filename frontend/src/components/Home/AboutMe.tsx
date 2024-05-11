@@ -69,11 +69,14 @@ export function AboutMe() {
               <Avatar src={'https://i.gyazo.com/a2ed4b668faf433418dacb5e742a1d29.jpg'} size={160} radius="lg" />
               <div>
                 <Text fw={500} className={classes.description} ta="center" mt="md">
-                  I am a fresh computer engineer dedicated to learning more about
-                  the computer engineering. I graduated from Simon Fraser University and am excited
-                  to make contributions to clients who have need of my skills. Since kindergarden, I've always been
-                  fascinated with computers and working with them. This lead me to spend majority of my life working
-                  with computers and pursue a career with them. Welcome to my personal website!
+                  Welcome to my website!
+                </Text>
+                <Text fw={500} className={classes.description} ta="center" mt="md">
+                  I'm a computer engineering graduate from SFU, passionate about technology and seeking opportunities 
+                  to contribute to your organization's success. With a strong foundation in computer engineering principles, I stay up-to-date 
+                  with the latest programming languages and industry trends. My problem-solving abilities, creative mindset, and attention to 
+                  detail enable me to deliver innovative solutions efficiently and effectively. Through my projects showcased on this website, 
+                  you can witness my dedication, growth, and the value I can bring to your organization.
                 </Text>
               </div>
           </Group>
