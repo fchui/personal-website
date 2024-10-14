@@ -49,7 +49,9 @@ RUN npm run build
 FROM base as final
 
 # Use production node environment by default.
-ENV NODE_ENV production
+ENV NODE_ENV=production
+
+RUN npm i -g serve
 
 # Run the application as a non-root user.
 USER node
@@ -67,4 +69,4 @@ COPY --from=build /usr/src/app/dist ./dist
 EXPOSE 8000
 
 # Run the application.
-CMD npm run preview
+CMD [ "serve", "-s", "dist" ]

@@ -92,6 +92,7 @@ services:
     container_name: frontend
     environment:
       NODE_ENV: final
+      PORT: 8000
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
