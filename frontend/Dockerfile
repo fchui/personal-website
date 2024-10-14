@@ -51,6 +51,8 @@ FROM base as final
 # Use production node environment by default.
 ENV NODE_ENV=production
 
+ENV PORT=8000
+
 RUN npm i -g serve
 
 # Run the application as a non-root user.
