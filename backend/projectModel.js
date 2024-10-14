@@ -1,10 +1,12 @@
 const dotenv = require('dotenv').config()
 const Pool = require('pg').Pool
+const fs = require('fs')
+
 const pool = new Pool({
   user: process.env.POSTGRES_USER,
   host: process.env.POSTGRES_HOST,
-  database: process.env.POSTGRES_DATABASE,
-  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
+  password: fs.readFileSync(process.env.POSTGRES_PASSWORD_FILE, 'utf8'),
   port: process.env.POSTGRES_PORT,
 });
 //get all projects from our database

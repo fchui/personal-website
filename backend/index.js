@@ -5,14 +5,8 @@ const port = 3001
 const project_model = require('./projectModel')
 
 app.use(express.json())
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
-  next();
-});
 
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
   project_model.getProjects()
   .then(response => {
     res.status(200).send(response);

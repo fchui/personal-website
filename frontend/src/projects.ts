@@ -10,12 +10,10 @@ async function initializeProjects(): Promise<Projects> {
     let collection: Projects = {};
     let response: Response;
     let projects: any;
-
-    console.log("fetch")
     try {
-      response = await fetch("http://localhost:3001")
+      response = await fetch("https://login.fykchui.com/api/")
     } catch (e) {
-      console.log('Unable to fetch from middleman, using backup')
+      console.log('Unable to fetch from middleman, using backup test 2')
       return backup
     }
 
