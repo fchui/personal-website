@@ -38,6 +38,7 @@ Give execution privileges to setup.sh. Run through setup.sh which should install
 chmod +x setup.sh
 sudo ./setup.sh
 ```
+You can create and write a database password in /db/password.txt. Docker will read this file and add it as the database password.
 Run the docker compose setup to setup the domain names and docker compose setup. For first time setups always do both staging configs
 ```bash
 ./compose-setup.sh
