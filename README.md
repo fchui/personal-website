@@ -14,4 +14,51 @@ There is a heavy usage of Mantine library to display UI elements.
 
 Feel free to use my code as your own.
 
-The website is in active development.
+# Quick Start
+It is possible to start up the front-end, back-end and database separately. This is a Docker focused project so I assume Docker is already installed in your computer. Then it's one simple command to start up a local development environment.
+```bash
+docker compose up
+```
+This command should start up the front-end, back-end and database in one go.
+
+# Deploy from VPS
+
+After installing a new server, create a new user From root
+```bash
+adduser webserver
+sudo usermod -aG sudo webserver
+```
+Log into the new user and download git repository using git clone. Change directory to personal-website
+```bash
+git clone https://github.com/fchui/personal-website.git
+cd personal-website/
+```
+Give execution privileges to setup.sh. Run through setup.sh which should install Docker and generate a DH parameter key
+```bash
+chmod +x setup.sh
+sudo ./setup.sh
+```
+Run the docker compose setup to setup the domain names and docker compose setup. For first time setups always do both staging configs
+```bash
+./compose-setup.sh
+y
+domainName.com
+s
+s
+```
+Run docker compose with both configuration files.
+```bash
+docker compose -f compose.yaml -f compose.webserver.yaml up -d
+```
+Ensure certbot was able to complete staging successfully. If not then you will have to debug before you move onto the next step.
+```bash
+docker logs certbot
+```
+Run compose setup again, this time setup nginx production and certbot production. Certbot production certificates are limited to 5/week per domain, so the staging must be done correctly. Force recreate the webserver to load the new nginx configuration. Then run certbot again to receive new SSL certificate. Confirm it was able to complete successfully with logs. Once it has completed successfully, restart the web server one last time to load the new certificate.
+```bash
+docker compose -f compose.yaml -f compose.webserver.yaml up -d --no-deps --force-recreate webserver
+docker compose -f compose.yaml -f compose.webserver.yaml up -d --no-deps --force-recreate certbot
+docker compose -f compose.yaml -f compose.webserver.yaml up -d --no-deps --force-recreate webserver
+docker logs certbot
+```
+Website should now be up running under HTTPS! I suggest run compose-setup again, with NGINX production and Certbot reinstall. This ensures you are not requesting a new certificate whenever Certbot is restarted.
