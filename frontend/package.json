@@ -9,9 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@types/react": "^18.2.15",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
     "@emotion/react": "^11.11.1",
     "@mantine/carousel": "^6.0.21",
     "@mantine/core": "^6.0.21",
@@ -19,6 +16,9 @@
     "@mantine/hooks": "^6.0.21",
     "@storybook/react": "^7.3.2",
     "@tabler/icons-react": "^2.34.0",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
     "dompurify": "^3.0.6",
     "dotenv": "^16.3.1",
     "embla-carousel-react": "^8.0.0-rc13",
@@ -30,10 +30,12 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.15.0",
+    "react-scripts": "^5.0.1",
     "sort-by": "^0.0.2",
     "vite": "^4.4.5"
   },
   "devDependencies": {
+    "@types/node": "^22.7.5",
     "eslint": "^8.45.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",

@@ -2,6 +2,8 @@ import {Projects, collection as backup} from "./data/projectdata.ts"
 
 const PROJECTS_KEY = "projects";
 
+const backendLink: string = import.meta.env.VITE_BACKEND_LINK || "http://localhost:3001/api/";
+
 export function saveProjects(projects: Projects): void {
     return localStorage.setItem(PROJECTS_KEY, JSON.stringify(projects));
 }
@@ -10,8 +12,9 @@ async function initializeProjects(): Promise<Projects> {
     let collection: Projects = {};
     let response: Response;
     let projects: any;
+    
     try {
-      response = await fetch("https://login.fykchui.com/api/")
+      response = await fetch(backendLink)
     } catch (e) {
       console.log('Unable to fetch from middleman, using backup test 2')
       return backup
