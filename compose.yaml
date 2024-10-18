@@ -8,50 +8,28 @@
 # database or a cache. For examples, see the Awesome Compose repository:
 # https://github.com/docker/awesome-compose
 services:
-  webserver:
-      image: nginx:mainline-alpine
-      container_name: webserver
-      restart: unless-stopped
-      ports:
-        - 80:80
-        - 443:443
-      volumes:
-        - web-root:/var/www/html
-        - ./nginx-conf:/etc/nginx/conf.d
-        - certbot-etc:/etc/letsencrypt
-        - certbot-var:/var/lib/letsencrypt
-        - dhparam:/etc/ssl/certs
-      depends_on:
-        - frontend
-        - backend
-      networks:
-        - public
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/www/html
-    depends_on:
-      - webserver
-    command: certonly --webroot --webroot-path=/var/www/html --email fchui@fykchui.com --agree-tos --no-eff-email --reinstall -d login.fykchui.com -d www.login.fykchui.com
   backend:
     build:
       args:
       - NODE_ENV=development
+      - PORT=$BACKEND_PORT
       context: backend
       target: development
     container_name: backend
     environment:
       NODE_ENV: development
+      FRONTEND_LINK: "http://localhost:$FRONTEND_PORT"
       POSTGRES_HOST: db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD_FILE: /run/secrets/db-password
       POSTGRES_DB: projects
       POSTGRES_PORT: 5432
+    ports:
+      - $BACKEND_PORT:$BACKEND_PORT
+    expose:
+      - $BACKEND_PORT
     secrets:
-      - db-password
+      - db-password 
     volumes:
       - ./backend/src:/code/src:ro
       - ./backend/package.json:/code/package.json
@@ -87,12 +65,18 @@ services:
       retries: 5
   frontend:
     build:
+      args:
+        PORT: ${FRONTEND_PORT}
+        VITE_BACKEND_LINK: "http://localhost:$FRONTEND_PORT/api/"
       context: frontend
-      target: final
+      target: preview
     container_name: frontend
     environment:
       NODE_ENV: final
-      PORT: 8000
+    ports:
+      - $FRONTEND_PORT:$FRONTEND_PORT
+    expose:
+      - $FRONTEND_PORT
     volumes:
       - ./frontend:/usr/src/app
       - /usr/src/app/node_modules
@@ -103,24 +87,12 @@ services:
       - public
 networks:
   public:
+    name: public
   private:
+    name: private
 volumes:
   back-notused:
   db-data:
-  certbot-etc:
-  certbot-var:
-  web-root:
-    driver: local
-    driver_opts:
-      type: none
-      device: ./frontend/dist/
-      o: bind
-  dhparam:
-    driver: local
-    driver_opts:
-      type: none
-      device: ./dhparam/
-      o: bind
 secrets:
   db-password:
     file: db/password.txt

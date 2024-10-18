@@ -8,7 +8,7 @@ ARG NODE_VERSION=20.10.0
 
 ################################################################################
 # Use node image for base image for all stages.
-FROM node:${NODE_VERSION}-alpine as base
+FROM node:${NODE_VERSION}-alpine AS base
 
 # Set working directory for all build stages.
 WORKDIR /usr/src/app
@@ -16,7 +16,7 @@ WORKDIR /usr/src/app
 
 ################################################################################
 # Create a stage for installing production dependecies.
-FROM base as deps
+FROM base AS deps
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.npm to speed up subsequent builds.
@@ -29,7 +29,7 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 
 ################################################################################
 # Create a stage for building the application.
-FROM deps as build
+FROM deps AS build
 
 # Download additional development dependencies before building, as some projects require
 # "devDependencies" to be installed to build. If you don't need this, remove this step.
@@ -40,18 +40,24 @@ RUN --mount=type=bind,source=package.json,target=package.json \
 
 # Copy the rest of the source files into the image.
 COPY . .
+
+# For environment variables to be accessed in VITE production, they must be put into an .env.production file
+ARG VITE_BACKEND_LINK=http://localhost:3001/api/
+RUN echo -e "VITE_BACKEND_LINK=${VITE_BACKEND_LINK}" > .env.production
+
 # Run the build script.
 RUN npm run build
 
 ################################################################################
 # Create a new stage to run the application with minimal runtime dependencies
 # where the necessary files are copied from the build stage.
-FROM base as final
+FROM base AS final
 
 # Use production node environment by default.
 ENV NODE_ENV=production
 
-ENV PORT=8000
+ARG PORT=8000
+ENV PORT ${PORT}
 
 RUN npm i -g serve
 
@@ -68,7 +74,11 @@ COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY --from=build /usr/src/app/dist ./dist
 
 # Expose the port that the application listens on.
-EXPOSE 8000
+EXPOSE ${PORT}
 
+FROM final AS preview
+CMD [ "npm", "run", "preview" ]
+
+FROM final AS deploy
 # Run the application.
 CMD [ "serve", "-s", "dist" ]

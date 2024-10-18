@@ -1,0 +1,56 @@
+services:
+  webserver:
+    image: nginx
+    container_name: webserver
+    environment:
+      BACKEND_PORT: $BACKEND_PORT
+      FRONTEND_PORT: $FRONTEND_PORT
+      DOMAIN_NAME: $DOMAIN_NAME
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - web-root:/var/www/html
+      - ./nginx-conf/nginx.conf:/etc/nginx/templates/nginx.conf.template
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - dhparam:/etc/ssl/certs
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - public
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-var:/var/lib/letsencrypt
+      - web-root:/var/www/html
+    depends_on:
+      - webserver
+    command: certonly --webroot --webroot-path=/var/www/html --email any@$DOMAIN_NAME --agree-tos --no-eff-email ${DRY_RUN_OPTION-} --$CERTBOT_OPTION -d $DOMAIN_NAME -d www.$DOMAIN_NAME
+    environment:
+      FRONTEND_LINK: "http://frontend:$FRONTEND_PORT"
+  frontend:
+    build:
+      context: frontend
+      target: deploy
+      args:
+        VITE_BACKEND_LINK: "https://$DOMAIN_NAME/api/"
+volumes:
+  certbot-etc:
+  certbot-var:
+  web-root:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./frontend/dist/
+      o: bind
+  dhparam:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./dhparam/
+      o: bind
