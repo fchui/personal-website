@@ -42,10 +42,19 @@ You can create and write a database password in /db/password.txt. Docker will re
 Run the docker compose setup to setup the domain names and docker compose setup. For first time setups always do both staging configs
 ```bash
 ./compose-setup.sh
+```
+```bash
+1
 y
 domainName.com
 s
 s
+```
+Set the database password by running compose-setup again with #2 option.
+```bash
+2
+y
+hidden-db-password
 ```
 Run docker compose with both configuration files.
 ```bash
