@@ -68,15 +68,10 @@ export function AboutMe() {
           <Group position='center' noWrap>
               <Avatar src={'https://i.gyazo.com/a2ed4b668faf433418dacb5e742a1d29.jpg'} size={160} radius="lg" />
               <div>
-                <Text fw={500} className={classes.description} ta="center" mt="md">
-                  Welcome to my website!
-                </Text>
-                <Text fw={500} className={classes.description} ta="center" mt="md">
-                  I'm a computer engineering graduate from SFU, passionate about technology and seeking opportunities 
-                  to contribute to your organization's success. With a strong foundation in computer engineering principles, I stay up-to-date 
-                  with the latest programming languages and industry trends. My problem-solving abilities, creative mindset, and attention to 
-                  detail enable me to deliver innovative solutions efficiently and effectively. Through my projects showcased on this website, 
-                  you can witness my dedication, growth, and the value I can bring to your organization.
+                <Text fw={500} className={classes.description} ta="justify" mt="md">
+                  Welcome! I'm a SFU computer engineer undergraduate passionate about technology and a drive to make impactful contributions to organizations. 
+                  By staying up-to-date with the latest tech trends, I bring creative problem-solving, attention to detail, and efficiency to every project.
+                  Explore my portfolio to see the dedication, skills, and value I can bring to your organization.
                 </Text>
               </div>
           </Group>

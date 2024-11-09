@@ -69,7 +69,7 @@ export function HeroHeader() {
 
         <Container size={640}>
           <Text size="xl" c='dimmed' className={classes.description}>
-            Passionate computer engineering professional driven to make a positive impact through innovative solutions
+            Dedicated computer engineering professional with a passion for creating impactful, innovative solutions that address real-world challenges.
           </Text>
         </Container>
       </div>
